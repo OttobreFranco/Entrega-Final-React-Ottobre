@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "car_model": "Vectra",
+        "car_factory": "Vauxhall",
+        "car_year": 1994,
+        "category": "black",
+        "img" : "https://www.touringcartimes.com/app/uploads/2014/07/1993Cleland.jpg"
+    },
+    {
+        "id": 2,
+        "car_model": "Omega",
+        "car_factory": "Opel",
+        "car_year": 1992,
+        "category": "white",
+        "img" : "https://i.pinimg.com/originals/3d/7f/83/3d7f83915b6e4c9c20eb3101204191af.jpg"
+    },
+    {
+        "id": 3,
+        "car_factory": "Opel",
+        "car_model": "Omega",
+        "car_year": 1992,
+        "category": "red",
+        "img" : "https://i.pinimg.com/originals/3d/7f/83/3d7f83915b6e4c9c20eb3101204191af.jpg"
+    }
+]
+
