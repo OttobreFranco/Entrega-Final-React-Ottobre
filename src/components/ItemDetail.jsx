@@ -12,7 +12,9 @@ const { addToCart } = useContext(CartContext)
 
 const handleAddToCart = (count) => {
   setSelectedQuantity(count)
+
   setShowItemCount(false)
+  
   addToCart(car,count)
 }
 

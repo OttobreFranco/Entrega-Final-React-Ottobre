@@ -12,40 +12,6 @@ export const ItemDetailContainer = (props) => {
 
   const [product, setProduct] = useState([]);
 
-  //   useEffect(() => {
-  //     const promesa = new Promise((resolve, reject) => {
-  //         setTimeout(() => {
-  //             resolve(data)
-  //         },2000)
-  //     })
-  //         promesa.then(result => {
-
-  //             setProduct(result.find(item => item.id === id))
-
-  //         })
-  //   }, [id])
-
-  //   useEffect(() => {
-  //     const promesa = new Promise((resolve, reject) => {
-  //       setTimeout(() => {
-  //         const product = data?.find(item => item.id === parseInt(id));
-  //         if (product) {
-  //           resolve(product);
-  //         } else {
-  //           reject(new Error("El producto no se encontró"));
-  //         }
-  //       }, 2000);
-  //     });
-  // promesa
-  // .then(result => {
-  //       setProduct(result);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  //   }, [id])
-
-  //   console.log(product)
 
   useEffect(() => {
     const db = getFirestore();

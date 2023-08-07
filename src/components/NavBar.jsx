@@ -1,22 +1,14 @@
-import { useEffect , useState } from "react";
+// import { useEffect , useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 
-import {
-  getFirestore,
-  getDocs,
-  collection,
-  query,
-  where,
-} from "firebase/firestore";
 
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 
 
 import { CartWidget } from "../components/CartWidget";
-import data from "../data/products.json";
 
 
 // const categories = data.map(product => product.category);
@@ -25,25 +17,6 @@ import data from "../data/products.json";
 
 export const NavBar = () => {
 
-  const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-
- 
-  //   const db = getFirestore();
-    
-  //   const q = query(
-  //     collection(db, "items"),
-  //     where("category", "===" , "Auto")
-  //   );
-
-  //   getDocs(q).then((snapshot) => {
-  //     if  (snapshot.size === 0) {
-  //       console.log("No Results");
-  //     }
-  //     setProducts(snapshot.docs.map(( doc ) => ( { id: doc.id , ...doc.data() } )));
-  //   })
-  // },[]);
 
   const unique = [ "Camion" , "Auto" ];
  
@@ -72,7 +45,7 @@ export const NavBar = () => {
           </NavLink>
         ))}
       </Nav>
-      <CartWidget />
+      <CartWidget/>
     </Container>
   </Navbar>
   );

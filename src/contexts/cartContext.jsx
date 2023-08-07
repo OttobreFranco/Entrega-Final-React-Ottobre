@@ -1,14 +1,15 @@
 import { createContext , useState } from 'react'
 
-export const CartContext = createContext([])
+export const CartContext = createContext({
+    cartList: []
+})
 
 export const CartProvider = ({ children }) => {
 
 const [cartList,setCartList] = useState([])
 
-console.log(cartList)
 
-const addToCart =(item,quantity) =>{
+const addToCart =(item,quantity) => {
     if(isInCart(cartList.id)){
         setCartList(cartList.map(product => {
             return product.id === item.id?{...product,quantity:product.quantity + quantity} : product
@@ -16,6 +17,7 @@ const addToCart =(item,quantity) =>{
     } else {
         setCartList( [...cartList, {...item,quantity}] );
     }
+    console.log(cartList)
 }
 
 const removeList = ( () => {
@@ -29,8 +31,13 @@ const deleteItem = (itemId) => {
 const isInCart = (id) =>
 cartList.find((product) => product.id === id)? true:false;
 
+
+const totalQuantity = cartList.length;
+
+console.log(cartList)
+
 return(
-<CartContext.Provider value={{cartList,addToCart,removeList,deleteItem,isInCart}}>{children}</CartContext.Provider>
+<CartContext.Provider value={{cartList,addToCart,removeList,deleteItem,totalQuantity}}>{children}</CartContext.Provider>
 )
 
 }
