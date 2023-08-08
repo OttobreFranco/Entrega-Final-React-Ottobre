@@ -8,17 +8,20 @@ export const CartProvider = ({ children }) => {
 
 const [cartList,setCartList] = useState([])
 
-
-const addToCart =(item,quantity) => {
-    if(isInCart(cartList.id)){
-        setCartList(cartList.map(product => {
-            return product.id === item.id?{...product,quantity:product.quantity + quantity} : product
-        }));
+const addToCart = (item, quantity) => {
+    if (isInCart(item.id)) {
+      setCartList((prevCartList) => {
+        return prevCartList.map((product) =>
+          product.id === item.id
+            ? { ...product, quantity: product.quantity + quantity }
+            : product
+        );
+      });
     } else {
-        setCartList( [...cartList, {...item,quantity}] );
+      setCartList([...cartList, { ...item, quantity }]);
     }
-    console.log(cartList)
-}
+  };
+  
 
 const removeList = ( () => {
     setCartList([]);
@@ -34,10 +37,16 @@ cartList.find((product) => product.id === id)? true:false;
 
 const totalQuantity = cartList.length;
 
-console.log(cartList)
+const total = () =>
+cartList.reduce(
+  (acumulador, valorActual) =>
+    acumulador + valorActual.quantity * valorActual.price,
+  0
+);
+
 
 return(
-<CartContext.Provider value={{cartList,addToCart,removeList,deleteItem,totalQuantity}}>{children}</CartContext.Provider>
+<CartContext.Provider value={{cartList,addToCart,removeList,deleteItem,totalQuantity,total}}>{children}</CartContext.Provider>
 )
 
 }

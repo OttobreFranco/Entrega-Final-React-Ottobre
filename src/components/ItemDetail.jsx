@@ -1,9 +1,12 @@
 import { useContext , useState } from 'react'
 import ItemCount from './ItemCount';
 import { CartContext } from "../contexts/cartContext"
+import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 
 export const ItemDetail = ({ car }) => {
+
 
 const [showItemCount, setShowItemCount] = useState(true)
 const [selectedQuantity, setSelectedQuantity] = useState(0)
@@ -18,9 +21,9 @@ const handleAddToCart = (count) => {
   addToCart(car,count)
 }
 
-const handleFinishPurchase = () => {
-  window.location.href= "/cart";
-}
+// const handleFinishPurchase = () => {
+//   window.location.href= "/cart";
+// }
 
   return (
     <>
@@ -34,7 +37,10 @@ const handleFinishPurchase = () => {
     ) : (
       <>
       <p>Cantidad: {selectedQuantity}</p>
-      <button onClick={handleFinishPurchase}> Realizar compra</button>
+      <Link to="/cart">
+      <Button variant="primary"
+            type="button"> Realizar compra</Button>
+      </Link>
       </>
     )}
     </>
