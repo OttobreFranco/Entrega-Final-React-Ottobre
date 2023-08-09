@@ -1,52 +1,64 @@
-import { createContext , useState } from 'react'
+import { createContext, useState } from "react";
 
 export const CartContext = createContext({
-    cartList: []
-})
+  cartList: [],
+});
 
 export const CartProvider = ({ children }) => {
+  const [cartList, setCartList] = useState([]);
 
-const [cartList,setCartList] = useState([])
+  const addToCart = (item, quantity) => {
+    const{ stock , ...rest } = item
 
-const addToCart = (item, quantity) => {
-    if (isInCart(item.id)) {
-      setCartList((prevCartList) => {
-        return prevCartList.map((product) =>
-          product.id === item.id
-            ? { ...product, quantity: product.quantity + quantity }
-            : product
-        );
-      });
-    } else {
-      setCartList([...cartList, { ...item, quantity }]);
+    const isInCart = cartList.some((item) => item.id === rest.id);
+
+    if (!isInCart) setCartList(prev => [...prev, { ...rest, quantity },]);
+
+    else {
+      const actualizarItems = cartList.map(item => {
+        if (item.id === rest.id)
+          return {
+            ...item,
+            quantity: item.quantity + quantity,
+          }
+          else return item
+    })
+    setCartList(actualizarItems)
     }
+  };
+
+
+  const removeList = () => {
+    setCartList([]);
+  };
+
+
+  const deleteItem = (itemId) => {
+    setCartList(prevList => prevList.filter(cartItem => cartItem.id !== itemId));
   };
   
 
-const removeList = ( () => {
-    setCartList([]);
-})
+  const totalQuantity = cartList.length;
 
-const deleteItem = (itemId) => {
-    setCartList ((prevList) => prevList.filter((cartItem) => cartItem.id !== itemId))
-}
+  const total = () =>
+    cartList.reduce(
+      (acumulador, valorActual) =>
+        acumulador + valorActual.quantity * valorActual.price,
+      0
+    );
 
-const isInCart = (id) =>
-cartList.find((product) => product.id === id)? true:false;
-
-
-const totalQuantity = cartList.length;
-
-const total = () =>
-cartList.reduce(
-  (acumulador, valorActual) =>
-    acumulador + valorActual.quantity * valorActual.price,
-  0
-);
-
-
-return(
-<CartContext.Provider value={{cartList,addToCart,removeList,deleteItem,totalQuantity,total}}>{children}</CartContext.Provider>
-)
-
-}
+  return (
+    <CartContext.Provider
+      value={{
+        cartList,
+        addToCart,
+        removeList,
+        deleteItem,
+        totalQuantity,
+        total,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};

@@ -13,6 +13,8 @@ const [selectedQuantity, setSelectedQuantity] = useState(0)
 
 const { addToCart } = useContext(CartContext)
 
+// const onAdd = quantity => addToCart(car , quantity)
+
 const handleAddToCart = (count) => {
   setSelectedQuantity(count)
 

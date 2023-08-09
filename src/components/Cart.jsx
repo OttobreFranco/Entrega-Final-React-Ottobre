@@ -20,6 +20,7 @@ export const Cart = () => {
   } else {
     return (
       <div>
+        
         {cartList.map((car) => (
           <div key={car.id}> 
             <Item car={car} />
@@ -37,6 +38,7 @@ export const Cart = () => {
           <Button variant="secondary">Checkout</Button>
         </Link>
       </div>
+
     );
   }
 };
