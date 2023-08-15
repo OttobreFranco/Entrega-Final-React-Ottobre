@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import { CartContext } from "../contexts/cartContext";
 import { Button, Container, Form } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-// import FormCheckInput from "react-bootstrap/esm/FormCheckInput";
 
 export const Checkout = () => {
   const [formValues, setFormValues] = useState({

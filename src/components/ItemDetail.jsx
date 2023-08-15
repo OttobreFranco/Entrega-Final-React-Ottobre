@@ -13,7 +13,6 @@ const [selectedQuantity, setSelectedQuantity] = useState(0)
 
 const { addToCart } = useContext(CartContext)
 
-// const onAdd = quantity => addToCart(car , quantity)
 
 const handleAddToCart = (count) => {
   setSelectedQuantity(count)
@@ -23,9 +22,6 @@ const handleAddToCart = (count) => {
   addToCart(car,count)
 }
 
-// const handleFinishPurchase = () => {
-//   window.location.href= "/cart";
-// }
 
   return (
     <>
