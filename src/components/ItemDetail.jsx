@@ -35,7 +35,7 @@ const handleAddToCart = (count) => {
     <div>Stock: {car.stock}</div>
     <img src={car.imageUrl} alt={car.title}/>
     {showItemCount ? (
-      <ItemCount stock={car.stock} onAdd={handleAddToCart} />
+      <ItemCount stock={car.stock} onAdd={handleAddToCart} itemId={car.id} />
     ) : (
       <>
       <p>Cantidad: {selectedQuantity}</p>
