@@ -38,7 +38,12 @@ export const CartProvider = ({ children }) => {
   };
   
 
-  const totalQuantity = cartList.length;
+  const totalQuantity = () => 
+    cartList.reduce(
+      (acumulador, valorActual) =>
+        acumulador + valorActual.quantity ,
+      0
+    )  
 
   const total = () =>
     cartList.reduce(
@@ -46,6 +51,7 @@ export const CartProvider = ({ children }) => {
         acumulador + valorActual.quantity * valorActual.price,
       0
     );
+
 
   return (
     <CartContext.Provider
